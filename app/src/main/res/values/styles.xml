@@ -7,4 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Light Time Picker-->
+    <style name="MyTimePickerLight" parent="android:Widget.Material.Light.TimePicker">
+
+    </style>
+    <style name="NumberPickerStyle"><item name="android:textSize">42sp</item>
+</style>
+
+
 </resources>

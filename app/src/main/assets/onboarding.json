@@ -1,0 +1,113 @@
+{
+  "appName": "ibd",
+  "onboardingOptions": [
+    {
+      "id": 1,
+      "name": "Track my lifestyle and ...",
+      "screens": [
+        {
+          "title": "Your lifestyle can have an impact ...",
+          "text": "By tracking these Feelings ...",
+          "animationUrl": "https://assets1.lottiefiles.com/packages/lf20_cepjdast.json",
+          "imageUrl": "",
+          "reminderTime": "",
+          "bottomText": ""
+        },
+        {
+          "title": "Brilliant! We recommend you ...",
+          "text": "By tracking these Feelings ...",
+          "animationUrl": "",
+          "imageUrl": "",
+          "reminderTime": "12:01",
+          "bottomText": "Pst... This is just to get you started with ..."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Improve my lifestyle ...",
+      "screens": [
+        {
+          "title": "Here's what to expect ...",
+          "text": "Courses and Singles are ...",
+          "animationUrl": "https://assets8.lottiefiles.com/packages/lf20_ocGoFt.json",
+          "imageUrl": "",
+          "reminderTime": "",
+          "bottomText":""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Option3 name",
+      "screens": [
+        {
+          "title": "Option3 screen 1 title",
+          "text": "Option3 screen 1 text",
+          "animationUrl": "https://assets8.lottiefiles.com/packages/lf20_F1gYik.json",
+          "imageUrl": "",
+          "reminderTime": "",
+          "bottomText":""
+        },
+        {
+          "title": "Option3 screen 2 title",
+          "text": "Option3 screen 2 text",
+          "animationUrl": "",
+          "imageUrl": "https://3pw8zx30ta4c3jegjv14ssuv-wpengine.netdna-ssl.com/wp-content/uploads/sites/2/2019/12/19-DDI-6059-IBD-CQD.jpg",
+          "reminderTime": "",
+          "bottomText":""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Option4 name",
+      "screens": [
+        {
+          "title": "Option4 screen 1 title",
+          "text": "Option4 screen 1 text",
+          "animationUrl": "",
+          "imageUrl": "https://our_backend/storage/images/oprion2_image2.png",
+          "reminderTime": "",
+          "bottomText":""
+        },
+        {
+          "title": "Option4 screen 2 title",
+          "text": "Option4 screen 2 text",
+          "animationUrl": "",
+          "imageUrl": "https://our_backend/storage/images/oprion2_image2.png",
+          "reminderTime": "",
+          "bottomText":""
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Option5 name",
+      "screens": [
+        {
+          "title": "Option5 screen 1 title",
+          "text": "Option5 screen 1 text",
+          "animationUrl": "https://assets8.lottiefiles.com/temp/lf20_zsIYUf.json",
+          "imageUrl": "",
+          "reminderTime": "",
+          "bottomText":""
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Option6 name",
+      "screens": [
+        {
+          "title": "Option6 screen 1 title",
+          "text": "Option6 screen 1 text",
+          "animationUrl": "https://assets8.lottiefiles.com/packages/lf20_HUU4vO.json",
+          "imageUrl": "",
+          "reminderTime": "",
+          "bottomText":""
+        }
+      ]
+    }
+  ]
+}
