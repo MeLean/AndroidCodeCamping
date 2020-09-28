@@ -5,17 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.TimePicker
-import com.airbnb.lottie.LottieAnimationView
 import com.milen.androidcodecamping.R
 import com.milen.androidcodecamping.onboarding.data.Screen
-import com.milen.androidcodecamping.onboarding.ui.OnboardingConstants.DEFAULT_ANIMATION
-import com.milen.utils.addTime
-import com.milen.utils.animateFromUrlOrDefault
-import com.milen.utils.beGone
-import com.milen.utils.loadUrl
+import com.milen.utils.*
 import kotlinx.android.synthetic.main.fragment_onboarding_presentation.view.*
 
 private const val ARG_SCREEN = "onboarding_screen"
@@ -49,18 +42,18 @@ class OnboardingPresentationFragment : Fragment() {
 
     private fun setData(view: View?, screen: Screen?) {
         view?.let{
-            setTextOrHide(it.onboarding_present_title, screen?.title)
-            setTextOrHide(it.onboarding_present_text, screen?.text)
-            setAnimationOrHide(it.onboarding_present_animation, screen?.animationUrl)
-            setImageOrHide(it.onboarding_present_image, screen?.imageUrl)
+            SetDataUtils.setTextOrHide(it.onboarding_present_title, screen?.title)
+            SetDataUtils.setTextOrHide(it.onboarding_present_text, screen?.text)
+            SetDataUtils.setImageOrHide(it.onboarding_present_image, screen?.imageUrl)
+            SetDataUtils.setAnimateUrlOrHide(it.onboarding_present_animation, screen?.animationUrl)
+            SetDataUtils.setTextOrHide(it.onboarding_present_bottom_text, screen?.title)
             setTimePickerOrHide(it.onboarding_present_picker, screen?.reminderTime)
-            setTextOrHide(it.onboarding_present_bottom_text, screen?.title)
         }
 
     }
 
     private fun setTimePickerOrHide(timePicker: TimePicker?, reminderTime: String?) {
-        if(isNullOrEmpty(reminderTime?.trim())){
+        if(SetDataUtils.isNullOrEmpty(reminderTime?.trim())){
             timePicker?.beGone()
         }else{
             setTimePickerTime(timePicker, reminderTime!!)
@@ -87,33 +80,6 @@ class OnboardingPresentationFragment : Fragment() {
         }
     }
 
-    private fun setImageOrHide(imageView: ImageView?, imageUrl: String?) {
-        if(isNullOrEmpty(imageUrl?.trim())){
-            imageView?.beGone()
-        }else{
-            imageView?.loadUrl(imageUrl!!)
-        }
-    }
-
-    private fun setAnimationOrHide(animationView: LottieAnimationView?, animationUrl: String?) {
-        if(isNullOrEmpty(animationUrl?.trim())){
-            animationView?.beGone()
-        }else{
-            animationView?.animateFromUrlOrDefault(animationUrl, DEFAULT_ANIMATION)
-        }
-    }
-
-    private fun setTextOrHide( textView: TextView?, text: String?) {
-        if(isNullOrEmpty(text?.trim())){
-            textView?.beGone()
-        }else{
-            textView?.text = text
-        }
-    }
-
-    private fun isNullOrEmpty(text: String?): Boolean {
-        return text == null || text.isEmpty()
-    }
 
     companion object {
         private const val DEFAULT_HOUR = 19

@@ -1,11 +1,13 @@
 package com.milen.androidcodecamping.onboarding.ui
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.milen.androidcodecamping.HomeActivity
 import com.milen.androidcodecamping.R
+import com.milen.androidcodecamping.dialogs.CustomDialogFragment
+import com.milen.androidcodecamping.dialogs.CustomDialogModel
 import com.milen.androidcodecamping.onboarding.data.OnboardingOption
 import com.milen.androidcodecamping.onboarding.data.OnboardingScenario
 import com.milen.androidcodecamping.onboarding.data.Screen
@@ -25,7 +27,7 @@ import com.milen.utils.startIntentAndFinish
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import javax.inject.Inject
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : AppCompatActivity(), View.OnClickListener{
     @Inject
     lateinit var mockedBackEnd: MockedBackEnd
 
@@ -33,6 +35,7 @@ class OnboardingActivity : AppCompatActivity() {
     private var selectedScreen: Int = INITIAL_SCREEN_INDEX
     private lateinit var onboardingScenario: OnboardingScenario
     private lateinit var onboardingPagerAdapter: OnboardingPagerAdapter
+    private var dialog : CustomDialogFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,13 @@ class OnboardingActivity : AppCompatActivity() {
 
         setupUI()
     }
+
+    override fun onStop() {
+        super.onStop()
+        dialog?.dismiss()
+    }
+
+    //TODO handle saved instance if needed
 
     private fun setMainFragment() {
         showMainFragment(true)
@@ -74,19 +84,23 @@ class OnboardingActivity : AppCompatActivity() {
             if(onboardingPagerAdapter.count > selectedScreen){
                 onboarding_pager?.setCurrentItem(selectedScreen, true)
             }else{
-                //TODO show POPUP
-                Toast.makeText(this, "Done", Toast.LENGTH_SHORT ).show()
-                navigateHome()
+                //TODO show POPUP and string res / constants
+                dialog = CustomDialogFragment.newInstance(CustomDialogModel(
+                    "TITLE TEST",
+                    "TEXT TEST",
+                    "round_burst.json",
+                    "logoloader.json",
+                    null,
+                    "Back to Tutorials" to this,
+                    "Home menu" to this,
+                ))
+                dialog!!.show(supportFragmentManager, CustomDialogFragment.FRAG_TAG)
             }
         }
 
         onboarding_btn_skip.setOnClickListener {
-            navigateHome()
+            navigateToHomeScreen()
         }
-    }
-
-    private fun navigateHome() {
-        startIntentAndFinish(HomeActivity::class.java)
     }
 
     private fun setViewPager() {
@@ -149,5 +163,29 @@ class OnboardingActivity : AppCompatActivity() {
 
         dynamic_lottie.playAnimation()
         setViewPager()
+    }
+
+    //TODO USE EVENT BUS
+    override fun onClick(view: View?) {
+        when(view?.id){
+            R.id.dialog_left_btn -> showInitialOnboarding()
+            R.id.dialog_right_btn -> navigateToHomeScreen()
+            R.id.dialog_center_btn -> dialog?.dismiss()
+        }
+    }
+
+    private fun showInitialOnboarding() {
+        dialog?.dismiss()
+
+        selectedOptionId = INITIAL_OPTION_ID
+        selectedScreen = INITIAL_SCREEN_INDEX
+        showMainFragment(true)
+    }
+
+
+    private fun navigateToHomeScreen() {
+        dialog?.dismiss()
+
+        startIntentAndFinish(HomeActivity::class.java)
     }
 }

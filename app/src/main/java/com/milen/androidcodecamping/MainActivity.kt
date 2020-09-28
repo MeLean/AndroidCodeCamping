@@ -15,9 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         animationView.animateFromUrlOrDefault(
             "https://assets7.lottiefiles.com/packages/lf20_cepjdast.json",
-            "idb_logo.json"
+            "logoloader.json"
         )
 
+        //animationView.setAnimation("round_burst.json")
         goOnboarding.setOnClickListener {
             startActivity(Intent(this, OnboardingActivity::class.java))
         }

@@ -14,7 +14,6 @@
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
@@ -26,8 +25,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:lottie_fileName="logoloader.json"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="MyIBDCare_LogoLoader.json"
         app:lottie_loop="true" />
 
     <Button
